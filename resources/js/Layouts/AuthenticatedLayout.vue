@@ -172,16 +172,11 @@ const toggleDark = useToggle(isDark);
                         <li>
                             <Dropdown>
                                 <template #trigger>
-                                    <button class="flex rounded-md">
+                                    <button class="flex rounded-md place-items-center">
                                         <img class="w-10 h-10 rounded-full"
                                             src="https://www.kibrispdr.org/data/312/gambar-cewek2-cantik-4.jpg" />
-                                        <div class="flex flex-col mx-2">
-                                            <div class="text-md font-bold">
+                                        <div class="mx-2">
                                                 {{ $page.props.auth.user.name }}
-                                            </div>
-                                            <div class="text-xs font-semibold">
-                                                <!-- {{ $page.props.auth.user.can }} -->
-                                            </div>
                                         </div>
                                     </button>
                                 </template>
