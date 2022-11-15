@@ -37,9 +37,10 @@ Route::prefix('user')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/data/list', [UserController::class, 'data'])->name('user.data.list');
 })->name('user.*');
 
-Route::prefix('application')->middleware(['auth', 'verified'])->group(function () {
+Route::prefix('application')->middleware(['auth', 'verified', 'role:super admin|admin'])->group(function () {
     Route::get('/list', [ApplicationController::class, 'index'])->name('application.list');
     Route::get('/setting', [ApplicationController::class, 'index'])->name('application.setting');
+
 })->name('application.*');
 
 Route::prefix('tutorial')->middleware(['auth', 'verified'])->group(function () {

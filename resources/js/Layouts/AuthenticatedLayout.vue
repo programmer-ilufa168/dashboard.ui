@@ -18,8 +18,6 @@ const openSide = ref(false);
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
 
-console.log(route().current('user.*'));
-// console.log(route().currentRouteName());
 </script>
 
 <template>
@@ -27,8 +25,8 @@ console.log(route().current('user.*'));
         <aside
             class="overflow-scroll bg-white dark:bg-gray-s100 scroll-smooth fixed inset-y-0 z-20 flex flex-col flex-shrink-0 max-h-screen shadow-xl"
             :class="{ 'w-64': openSide, 'hidden md:block md:w-64': !openSide }">
-            <div class="flex justify-between place-items-center dark:text-white-smooth py-4 px-3">
-                <div class="text-2xl font-bold">alceo.my.id</div>
+            <div class="flex justify-between place-items-center dark:text-white-smooth py-5 md:py-8 px-3">
+                <div class="text-2xl font-bold">Dashboard</div>
                 <button class="md:hidden flex place-items-center" @click="openSide = !openSide">
                     <font-awesome-icon icon="fa-solid fa-xmark" class="dark:text-white-smooth text-2xl" />
                 </button>
@@ -67,7 +65,7 @@ console.log(route().current('user.*'));
                             class="text-sm font-semibold my-2 ml-4 mr-2 rounded ">
                             <li>
                                 <Link :href="route('application.list')">
-                                <div class="px-3 py-2"
+                                <div class="px-5 py-2"
                                     :class="{ 'dark:bg-gray-s200 bg-gray-100 dark:text-white rounded': route().current('application.list') }">
                                     List
                                 </div>
@@ -75,7 +73,7 @@ console.log(route().current('user.*'));
                             </li>
                             <li>
                                 <Link :href="route('application.setting')">
-                                <div class="px-3 py-2"
+                                <div class="px-5 py-2"
                                     :class="{ 'dark:bg-gray-s200 bg-gray-100 dark:text-white rounded': route().current('application.setting') }">
                                     Setting
                                 </div>
@@ -115,7 +113,7 @@ console.log(route().current('user.*'));
                             class="text-sm font-semibold my-2 ml-4 mr-2 rounded ">
                             <li>
                                 <Link :href="route('user.list')">
-                                <div class="px-3 py-2"
+                                <div class="px-5 py-2"
                                     :class="{ 'dark:bg-gray-s200 bg-gray-100 dark:text-white rounded': route().current('user.list') }">
                                     List
                                 </div>
@@ -123,7 +121,7 @@ console.log(route().current('user.*'));
                             </li>
                             <li>
                                 <Link :href="route('user.data.list')">
-                                <div class="px-3 py-2"
+                                <div class="px-5 py-2"
                                     :class="{ 'dark:bg-gray-s200 bg-gray-100 dark:text-white rounded': route().current('user.data.list') }">
                                     Data
                                 </div>
@@ -131,13 +129,25 @@ console.log(route().current('user.*'));
                             </li>
                             <li>
                                 <Link :href="route('user.data.list')">
-                                <div class="px-3 py-2"
+                                <div class="px-5 py-2"
                                     :class="{ 'dark:bg-gray-s200 bg-gray-100 dark:text-white rounded': route().current('user.data.list') }">
                                     Setting
                                 </div>
                                 </Link>
                             </li>
                         </ul>
+                    </li>
+                    <li class="font-bold" v-if="is('super admin')">
+                        <Link href="/tutorial">
+                        <div class="px-4 py-2 rounded mx-2 flex place-items-center space-x-2 hover:bg-gray-100 hover:dark:bg-gray-s200 hover:text-gray-800 hover:dark:text-white"
+                            :class="{ 'dark:bg-gray-s200 bg-gray-100 dark:text-white': route().current('tutorial.*'), 'text-gray-s200 dark:text-white-smooth': !route().current('tutorial.*') }">
+                            <div><font-awesome-icon icon="fa-solid fa-gear" />
+                            </div>
+                            <div>
+                                Setting
+                            </div>
+                        </div>
+                        </Link>
                     </li>
                 </ul>
             </div>
@@ -170,7 +180,7 @@ console.log(route().current('user.*'));
                                                 {{ $page.props.auth.user.name }}
                                             </div>
                                             <div class="text-xs font-semibold">
-                                                Admin
+                                                <!-- {{ $page.props.auth.user.can }} -->
                                             </div>
                                         </div>
                                     </button>
@@ -178,8 +188,7 @@ console.log(route().current('user.*'));
                                 <template #content>
                                     <DropdownLink :href="route('logout')" method="post" as="button">
                                         <div class="flex flex-wrap space-x-2">
-                                            <div>
-                                                <font-awesome-icon icon="fa-regular fa-user" />
+                                            <div><font-awesome-icon icon="fa-solid fa-user" />
                                             </div>
                                             <div>Profile</div>
                                         </div>

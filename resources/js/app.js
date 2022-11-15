@@ -8,6 +8,8 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 
 
+import LaravelPermissionToVueJS from 'laravel-permission-to-vuejs'
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -26,6 +28,7 @@ createInertiaApp({
     setup({ el, app, props, plugin }) {
         return createApp({ render: () => h(app, props) })
             .use(plugin)
+            .use(LaravelPermissionToVueJS)
             .component('font-awesome-icon', FontAwesomeIcon)
             .use(ZiggyVue, Ziggy)
             .mount(el);

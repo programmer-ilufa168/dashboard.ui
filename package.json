@@ -27,6 +27,7 @@
         "@fortawesome/vue-fontawesome": "^3.0.1",
         "@protonemedia/inertiajs-tables-laravel-query-builder": "^2.1.0",
         "@vueuse/core": "^9.5.0",
-        "flowbite": "^1.5.3"
+        "flowbite": "^1.5.3",
+        "laravel-permission-to-vuejs": "^3.0.1"
     }
 }
