@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ApplicationController;
 
 
 use Illuminate\Foundation\Application;
@@ -35,6 +36,16 @@ Route::prefix('user')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/list', [UserController::class, 'index'])->name('user.list');
     Route::get('/data/list', [UserController::class, 'data'])->name('user.data.list');
 })->name('user.*');
+
+Route::prefix('application')->middleware(['auth', 'verified'])->group(function () {
+    Route::get('/list', [ApplicationController::class, 'index'])->name('application.list');
+    Route::get('/setting', [ApplicationController::class, 'index'])->name('application.setting');
+})->name('application.*');
+
+Route::prefix('tutorial')->middleware(['auth', 'verified'])->group(function () {
+    Route::get('/', [UserController::class, 'index'])->name('tutorial.*');
+    Route::get('/detail', [UserController::class, 'index'])->name('tutorial.detail');
+})->name('tutorial.*');
 
 
 require __DIR__.'/auth.php';
