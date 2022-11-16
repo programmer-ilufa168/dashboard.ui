@@ -137,11 +137,12 @@ const toggleDark = useToggle(isDark);
                             </li>
                         </ul>
                     </li>
-                    <li class="font-bold" v-if="is('super admin')">
+                    <li v-if="is('super admin')" class="font-bold">
                         <Link href="/tutorial">
                         <div class="px-4 py-2 rounded mx-2 flex place-items-center space-x-2 hover:bg-gray-100 hover:dark:bg-gray-s200 hover:text-gray-800 hover:dark:text-white"
                             :class="{ 'dark:bg-gray-s200 bg-gray-100 dark:text-white': route().current('tutorial.*'), 'text-gray-s200 dark:text-white-smooth': !route().current('tutorial.*') }">
-                            <div><font-awesome-icon icon="fa-solid fa-gear" />
+                            <div>
+                                <font-awesome-icon icon="fa-solid fa-gear" />
                             </div>
                             <div>
                                 Setting
@@ -176,14 +177,14 @@ const toggleDark = useToggle(isDark);
                                         <img class="w-10 h-10 rounded-full"
                                             src="https://www.kibrispdr.org/data/312/gambar-cewek2-cantik-4.jpg" />
                                         <div class="mx-2">
-                                                {{ $page.props.auth.user.name }}
-                                        </div>
+                                            {{ $page.props.auth.user.name }} </div>
                                     </button>
                                 </template>
                                 <template #content>
                                     <DropdownLink :href="route('logout')" method="post" as="button">
                                         <div class="flex flex-wrap space-x-2">
-                                            <div><font-awesome-icon icon="fa-solid fa-user" />
+                                            <div>
+                                                <font-awesome-icon icon="fa-solid fa-user" />
                                             </div>
                                             <div>Profile</div>
                                         </div>
