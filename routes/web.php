@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\CekController;
 
 
 use Illuminate\Foundation\Application;
@@ -31,6 +32,10 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::prefix('cek')->middleware(['auth', 'verified'])->group(function () {
+    Route::get('/status', [CekController::class, 'index'])->name('cek.status');
+})->name('cek.*');
 
 Route::prefix('user')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/list', [UserController::class, 'index'])->name('user.list');

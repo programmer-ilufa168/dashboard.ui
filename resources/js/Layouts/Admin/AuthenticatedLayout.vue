@@ -41,7 +41,7 @@ const toggleDark = useToggle(isDark);
                                 <font-awesome-icon icon="fa-solid fa-house" />
                             </div>
                             <div>
-                                Dashboard
+                                Dashboard Admin
                             </div>
                         </div>
                         </Link>
@@ -177,8 +177,7 @@ const toggleDark = useToggle(isDark);
                                         <img class="w-10 h-10 rounded-full"
                                             src="https://www.kibrispdr.org/data/312/gambar-cewek2-cantik-4.jpg" />
                                         <div class="mx-2">
-                                            {{ $page.props.auth.user.name }}
-                                            {{ $page.props.auth }} </div>
+                                            {{ $page.props.auth.user.name }} </div>
                                     </button>
                                 </template>
                                 <template #content>
