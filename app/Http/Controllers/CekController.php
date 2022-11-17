@@ -16,14 +16,13 @@ use Illuminate\Auth\AuthenticationException;
 class CekController extends Controller
 {
     public function index (Request $request) {
-        // $user = Auth::user();
-        // return $user->getRoleNames();
+
         if(Auth::user()->hasRole('admin')) {
-            return 'admin';
+            return redirect()->route('/dashboard');
         } else if (Auth::user()->hasRole('super admin')) {
-            return 'super admin';
+            return redirect()->route('/super-admin');
         } else if (Auth::user()->hasRole('guest')){
-            return 'guest';
+            return redirect()->route('guest');
         }
     }
 }

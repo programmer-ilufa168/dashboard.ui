@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GuestController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\CekController;
@@ -31,11 +32,26 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified', 'role:admin'])->name('dashboard');
 
 Route::prefix('cek')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/status', [CekController::class, 'index'])->name('cek.status');
 })->name('cek.*');
+
+// Guest
+Route::prefix('guest')->middleware(['auth', 'verified', 'role:guest'])->group(function () {
+    Route::get('/', [GuestController::class, 'index'])->name('guest');
+})->name('guest.*');
+// Admin
+Route::prefix('application')->middleware(['auth', 'verified', 'role:admin'])->group(function () {
+    Route::get('/list', [ApplicationController::class, 'index'])->name('application.list');
+    Route::get('/setting', [ApplicationController::class, 'index'])->name('application.setting');
+})->name('application.*');
+// Super Admin
+Route::prefix('super-admin')->middleware(['auth', 'verified', 'role:super admin'])->group(function () {
+    Route::get('/list', [ApplicationController::class, 'index'])->name('super-admin.list');
+    Route::get('/setting', [ApplicationController::class, 'index'])->name('super-admin.setting');
+})->name('super-admin.*');
 
 Route::prefix('user')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/list', [UserController::class, 'index'])->name('user.list');
