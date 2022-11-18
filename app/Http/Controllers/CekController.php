@@ -20,7 +20,7 @@ class CekController extends Controller
         if(Auth::user()->hasRole('admin')) {
             return redirect()->route('/dashboard');
         } else if (Auth::user()->hasRole('super admin')) {
-            return redirect()->route('/super-admin');
+            return redirect()->route('super-admin');
         } else if (Auth::user()->hasRole('guest')){
             return redirect()->route('guest');
         }

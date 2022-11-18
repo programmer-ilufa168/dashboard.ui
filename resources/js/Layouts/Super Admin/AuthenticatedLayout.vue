@@ -34,14 +34,14 @@ const toggleDark = useToggle(isDark);
             <div class="dark:text-white-smooth w-full">
                 <ul class="flex flex-col space-y-1">
                     <li class="font-bold">
-                        <Link href="/dashboard">
+                        <Link href="/super-admin">
                         <div class="px-4 py-2 rounded mx-2 flex place-items-center space-x-2 hover:bg-gray-100 hover:dark:bg-gray-s200 hover:text-gray-800 hover:dark:text-white"
-                            :class="{ 'dark:bg-gray-s200 bg-gray-100 dark:text-white': route().current('dashboard'), 'text-gray-s200 dark:text-white-smooth': !route().current('dashboard') }">
+                            :class="{ 'dark:bg-gray-s200 bg-gray-100 dark:text-white': route().current('super-admin'), 'text-gray-s200 dark:text-white-smooth': !route().current('super-admin') }">
                             <div>
                                 <font-awesome-icon icon="fa-solid fa-house" />
                             </div>
                             <div>
-                                Dashboard Super Admin
+                                Dashboard
                             </div>
                         </div>
                         </Link>
@@ -49,7 +49,7 @@ const toggleDark = useToggle(isDark);
                     <li class="font-bold">
                         <div @click="showingMenuApplicationDropdown = !showingMenuApplicationDropdown"
                             class="px-4 py-2 rounded mx-2 flex justify-between place-items-center hover:bg-gray-100 hover:dark:bg-gray-s200 hover:text-gray-800 hover:dark:text-white"
-                            :class="{ 'dark:bg-gray-s200 bg-gray-100 dark:text-white': route().current('application.*'), 'text-white-s200 dark:text-white-smooth': !route().current('application.*') }">
+                            :class="{ 'dark:bg-gray-s200 bg-gray-100 dark:text-white': route().current('super-admin.application.*'), 'text-white-s200 dark:text-white-smooth': !route().current('super-admin.application.*') }">
                             <div class="flex space-x-2 place-items-center">
                                 <font-awesome-icon icon="fa-solid fa-rocket" />
                                 <span>Application</span>

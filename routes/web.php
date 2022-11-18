@@ -42,15 +42,25 @@ Route::prefix('cek')->middleware(['auth', 'verified'])->group(function () {
 Route::prefix('guest')->middleware(['auth', 'verified', 'role:guest'])->group(function () {
     Route::get('/', [GuestController::class, 'index'])->name('guest');
 })->name('guest.*');
+
 // Admin
 Route::prefix('application')->middleware(['auth', 'verified', 'role:admin'])->group(function () {
+    Route::get('/', [ApplicationController::class, 'index'])->name('application.list');
     Route::get('/list', [ApplicationController::class, 'index'])->name('application.list');
     Route::get('/setting', [ApplicationController::class, 'index'])->name('application.setting');
 })->name('application.*');
+
 // Super Admin
 Route::prefix('super-admin')->middleware(['auth', 'verified', 'role:super admin'])->group(function () {
-    Route::get('/list', [ApplicationController::class, 'index'])->name('super-admin.list');
-    Route::get('/setting', [ApplicationController::class, 'index'])->name('super-admin.setting');
+    Route::get('/', [ApplicationController::class, 'index'])->name('super-admin');
+    // Route::get('/list', [ApplicationController::class, 'index'])->name('super-admin.application.list');
+    // Route::get('/setting', [ApplicationController::class, 'index'])->name('super-admin.application.setting');
+
+    Route::prefix('application')->middleware(['auth', 'verified', 'role:super admin'])->group(function () {
+        Route::get('/list', [ApplicationController::class, 'index'])->name('super-admin.application.list');
+        Route::get('/setting', [ApplicationController::class, 'index'])->name('super-admin.application.setting');
+    })->name('super-admin.application.*');
+
 })->name('super-admin.*');
 
 Route::prefix('user')->middleware(['auth', 'verified'])->group(function () {
@@ -61,7 +71,6 @@ Route::prefix('user')->middleware(['auth', 'verified'])->group(function () {
 Route::prefix('application')->middleware(['auth', 'verified', 'role:super admin|admin'])->group(function () {
     Route::get('/list', [ApplicationController::class, 'index'])->name('application.list');
     Route::get('/setting', [ApplicationController::class, 'index'])->name('application.setting');
-
 })->name('application.*');
 
 Route::prefix('tutorial')->middleware(['auth', 'verified'])->group(function () {
